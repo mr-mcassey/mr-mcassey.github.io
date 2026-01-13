@@ -61,7 +61,7 @@
             letter-spacing: 0.2em;
             font-size: 0.75rem;
             font-weight: 700;
-            color: var(--accent-blue);
+            color: var(--text-muted);
             margin-bottom: 0.5rem;
         }
 
@@ -69,7 +69,15 @@
             font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 800;
             letter-spacing: -0.04em;
-            color: var(--text-main);
+        }
+
+        /* Header Color Accents */
+        #home .main-logo {
+            color: var(--accent-red);
+        }
+
+        #webapps .main-logo {
+            color: var(--accent-blue);
         }
 
         .description {
@@ -100,6 +108,7 @@
             border: 1px solid rgba(0,0,0,0.03);
             transition: var(--transition);
             cursor: pointer;
+            color: inherit;
         }
 
         .card:hover {
@@ -151,33 +160,47 @@
             color: var(--text-main);
         }
 
-        .apps-list {
+        .apps-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 1.5rem;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
-        .app-item {
+        .app-card {
             aspect-ratio: 1;
-            background: #f0f0f0;
+            background: var(--card-bg);
             border-radius: var(--radius);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #aaa;
-            font-weight: 500;
-            border: 2px dashed #ddd;
+            text-align: center;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
         }
 
-        /* Footer Branding */
-        .footer {
-            position: fixed;
-            bottom: 2rem;
-            font-size: 0.8rem;
-            color: #ccc;
-            font-weight: 500;
+        .app-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+        }
+
+        .app-placeholder {
+            border: 2px dashed #ddd;
+            background: transparent;
+            color: #aaa;
+            box-shadow: none;
+        }
+        
+        .app-placeholder:hover {
+            transform: none;
+            box-shadow: none;
         }
 
     </style>
@@ -214,8 +237,6 @@
                 </div>
             </div>
         </nav>
-
-        <footer class="footer">MR. MCASSEY &copy; 2024</footer>
     </div>
 
     <!-- WEBAPPS PAGE -->
@@ -227,11 +248,15 @@
             <h1 class="main-logo">Web Apps</h1>
         </header>
 
-        <div class="apps-list">
-            <div class="app-item">Bracket Master<a href="https://mr.mcassey.com/bracket-master" class="card" target="_blank"></div>
-            <div class="app-item">App 2</div>
-            <div class="app-item">App 3</div>
-            <div class="app-item">App 4</div>
+        <div class="apps-grid">
+            <!-- Active App Link -->
+            <a href="https://mr.mcassey.com/bracket-master" class="app-card" target="_blank">
+                <span>Bracket Master</span>
+            </a>
+            
+            <!-- Placeholders -->
+            <div class="app-card app-placeholder">App 2</div>
+            <div class="app-card app-placeholder">App 3</div>
         </div>
     </div>
 
@@ -252,6 +277,4 @@
         }
     </script>
 </body>
-
 </html>
-
