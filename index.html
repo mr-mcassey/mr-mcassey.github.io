@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. McAssey | Landing Page</title>
+    <style>
+        /* Modern CSS Reset & Variables */
+        :root {
+            --bg-color: #fcfcfc;
+            --card-bg: #ffffff;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --accent-green: #22c55e;
+            --radius: 18px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        /* Layout Structure */
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        /* Branding Section */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-label {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .main-logo {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--text-main);
+        }
+
+        .description {
+            max-width: 480px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Navigation Links (Cards) */
+        .nav-grid {
+            display: grid;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 1.75rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08);
+            border-color: rgba(0,0,0,0.08);
+        }
+
+        /* Text Logo Styling */
+        .logo-text {
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .bold-part {
+            font-weight: 900;
+        }
+
+        .studio-part {
+            font-family: "SF Mono", "Monaco", "Inconsolata", monospace;
+            font-weight: 400;
+            color: #999;
+            margin-left: 0.25rem;
+        }
+
+        /* Color Variants */
+        .r { color: var(--accent-red); }
+        .g { color: var(--accent-green); }
+        .b { color: var(--accent-blue); }
+        .web { color: var(--accent-blue); }
+
+        /* WebApps Subpage Elements */
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: none;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .back-btn:hover {
+            background: #eee;
+            color: var(--text-main);
+        }
+
+        .apps-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .app-item {
+            aspect-ratio: 1;
+            background: #f0f0f0;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-weight: 500;
+            border: 2px dashed #ddd;
+        }
+
+        /* Footer Branding */
+        .footer {
+            position: fixed;
+            bottom: 2rem;
+            font-size: 0.8rem;
+            color: #ccc;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page">
+        <header class="header">
+            <span class="welcome-label">Welcome to</span>
+            <h1 class="main-logo">Mr. McAssey</h1>
+        </header>
+
+        <p class="description">
+            The central hub for student projects, digital design portfolios, and interactive classroom tools. 
+        </p>
+
+        <nav class="nav-grid">
+            <!-- RGBstudio Link -->
+            <a href="https://rgb.trivalleycsd.org" class="card" target="_blank">
+                <div class="logo-text">
+                    <span class="bold-part">
+                        <span class="r">R</span><span class="g">G</span><span class="b">B</span>
+                    </span>
+                    <span class="studio-part">STUDIO</span>
+                </div>
+            </a>
+
+            <!-- WEBapps Trigger -->
+            <div class="card" onclick="togglePage('webapps')">
+                <div class="logo-text">
+                    <span class="bold-part web">WEB</span>
+                    <span class="studio-part">APPS</span>
+                </div>
+            </div>
+        </nav>
+
+        <footer class="footer">MR. MCASSEY &copy; 2024</footer>
+    </div>
+
+    <!-- WEBAPPS PAGE -->
+    <div id="webapps" class="page hidden">
+        <button class="back-btn" onclick="togglePage('home')">← Back</button>
+        
+        <header class="header">
+            <span class="welcome-label">Portal</span>
+            <h1 class="main-logo">Web Apps</h1>
+        </header>
+
+        <div class="apps-list">
+            <div class="app-item">App 1</div>
+            <div class="app-item">App 2</div>
+            <div class="app-item">App 3</div>
+            <div class="app-item">App 4</div>
+        </div>
+    </div>
+
+    <script>
+        function togglePage(pageId) {
+            const home = document.getElementById('home');
+            const webapps = document.getElementById('webapps');
+
+            if (pageId === 'webapps') {
+                home.classList.add('hidden');
+                webapps.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            } else {
+                webapps.classList.add('hidden');
+                home.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
+</body>
+</html>
